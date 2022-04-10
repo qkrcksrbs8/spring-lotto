@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LottoController {
 
     @GetMapping("/test")
-    public String test() {
-        Param param = new Param()
+    public Param test() {
+        return new Param()
                 .set("aa", 11)
                 .set("bb", 22);
-        param.toString();
-        return "";
     }
 }
