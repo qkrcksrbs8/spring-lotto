@@ -10,8 +10,9 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User {
+    private int seq;
     private String name;
     private String age;
-    private String email;
-    private String etc;
+    private String created_date;
+    private String update_date;
 }
