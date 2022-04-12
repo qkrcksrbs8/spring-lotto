@@ -1,6 +1,7 @@
 package cg.park.springlotto.cotrollers;
 
 import cg.park.springlotto.services.impl.LottoServiceImpl;
+import cg.park.springlotto.services.impl.TestNumberServiceImpl;
 import cg.park.springlotto.utils.Lotto;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
@@ -27,11 +28,9 @@ public class LottoController {
 
     @GetMapping("/number")
     public Param number() {
-        Param param = new Param().set("count", 1);
-        String preCode = lottoServiceimpl.pre(param);
-        if (!preCode.startsWith("S")) return null;
-        Param excute = lottoServiceimpl.execute(param);
-        return excute;
+        TestNumberServiceImpl testNumberService = new TestNumberServiceImpl();
+        Param result = testNumberService.execute(new Param().set("count", 1));
+        return result;
     }
 
     @GetMapping("/number/{count}")
