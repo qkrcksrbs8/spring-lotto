@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 public class Message {
-    private Param param;
+    private Param data;
     private String code;
     private String message;
 }

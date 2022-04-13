@@ -15,10 +15,10 @@ public class TestNumberServiceImpl extends Command {
     @Autowired
     PcgUtil pcgutil;
 
-    public String pre(Param param) {
+    public Param pre(Param param) {
         int count = Integer.parseInt(String.valueOf(param.get("count")));
-        if (0 > count && 6 < count) return "P0001";
-        return "S0001";
+        if (0 > count && 6 < count) return new Param().set("code", "P0001");
+        return new Param().set("code", "S0001");
     }
 
     public Param post(Param param) {

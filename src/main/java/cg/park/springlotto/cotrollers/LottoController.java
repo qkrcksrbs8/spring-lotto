@@ -1,5 +1,6 @@
 package cg.park.springlotto.cotrollers;
 
+import cg.park.springlotto.models.Message;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.services.impl.TestNumberServiceImpl;
 import cg.park.springlotto.utils.Lotto;
@@ -26,8 +27,8 @@ public class LottoController {
     TestNumberServiceImpl testNumberService;
 
     @GetMapping("/number")
-    public Param number() {
-        Param result = testNumberService.execute(new Param().set("count", 1));
+    public Message number() {
+        Message result = testNumberService.execute(new Param().set("count", 1));
         return result;
     }
 
@@ -41,8 +42,8 @@ public class LottoController {
     }
 
     @GetMapping("/ask")
-    public ResponseEntity<Param> ask() {
-        Param result = testNumberService.execute(new Param().set("count", 1));
+    public ResponseEntity<Message> ask() {
+        Message result = testNumberService.execute(new Param().set("count", 1));
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(result, status);
     }
