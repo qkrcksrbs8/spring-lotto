@@ -1,7 +1,9 @@
 package cg.park.springlotto;
 
 import cg.park.springlotto.daos.LottoDao;
+import cg.park.springlotto.daos.MessageDao;
 import cg.park.springlotto.daos.UserDao;
+import cg.park.springlotto.models.Message;
 import cg.park.springlotto.models.User;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.utils.Lotto;
@@ -61,6 +63,19 @@ class SpringLottoApplicationTests {
         try {
             List<User> users = userDao.allUser();
             System.out.println(users.size());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Autowired
+    MessageDao messageDao;
+    @Test
+    public void megTest() {
+        System.out.println("Message");
+        try {
+            Message message = messageDao.selectMessage("S0001");
+            System.out.println(message.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
         }
