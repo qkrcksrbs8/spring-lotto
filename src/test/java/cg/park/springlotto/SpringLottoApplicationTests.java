@@ -109,4 +109,12 @@ class SpringLottoApplicationTests {
         Message result = testNumberService.execute(new Param().set("count", 1));
         System.out.println(result);
     }
+
+    MessageEnum me;
+
+    @Test
+    public void EnumTest() {
+        System.out.println(me.S0001);
+        System.out.println(me.P0001);
+    }
 }
