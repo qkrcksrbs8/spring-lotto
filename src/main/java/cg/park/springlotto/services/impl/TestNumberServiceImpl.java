@@ -1,11 +1,13 @@
 package cg.park.springlotto.services.impl;
 
+import cg.park.springlotto.comm.constant.MessageEnum;
 import cg.park.springlotto.services.Command;
 import cg.park.springlotto.utils.Lotto;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 @Service
 public class TestNumberServiceImpl extends Command {

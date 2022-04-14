@@ -1,11 +1,10 @@
 package cg.park.springlotto.cotrollers;
 
+import cg.park.springlotto.comm.constant.MessageEnum;
 import cg.park.springlotto.models.Message;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.services.impl.TestNumberServiceImpl;
-import cg.park.springlotto.utils.Lotto;
 import cg.park.springlotto.utils.Param;
-import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,12 +32,9 @@ public class LottoController {
     }
 
     @GetMapping("/number/{count}")
-    public Param manyNumber(@RequestParam int count) {
-        Param param = new Param().set("count", count);
-        String preCode = lottoServiceimpl.pre(param);
-        if (!preCode.startsWith("S")) return null;
-        Param excute = lottoServiceimpl.execute(param);
-        return excute;
+    public Message manyNumber(@RequestParam int count) {
+        Message result = testNumberService.execute(new Param().set("count", count));
+        return result;
     }
 
     @GetMapping("/ask")

@@ -1,11 +1,13 @@
 package cg.park.springlotto;
 
+import cg.park.springlotto.comm.constant.MessageEnum;
 import cg.park.springlotto.daos.LottoDao;
 import cg.park.springlotto.daos.MessageDao;
 import cg.park.springlotto.daos.UserDao;
 import cg.park.springlotto.models.Message;
 import cg.park.springlotto.models.User;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
+import cg.park.springlotto.services.impl.TestNumberServiceImpl;
 import cg.park.springlotto.utils.Lotto;
 import cg.park.springlotto.utils.Param;
 import org.junit.jupiter.api.Test;
@@ -96,5 +98,15 @@ class SpringLottoApplicationTests {
         if (!preCode.startsWith("S")) ;
         Param excute = lottoServiceimpl.execute(param);
         System.out.println(excute);
+    }
+
+
+    @Autowired
+    TestNumberServiceImpl testNumberService;
+
+    @Test
+    public void TestNum() {
+        Message result = testNumberService.execute(new Param().set("count", 1));
+        System.out.println(result);
     }
 }
