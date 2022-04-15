@@ -1,6 +1,6 @@
 package cg.park.springlotto.utils;
 
-import org.springframework.context.annotation.Bean;
+import cg.park.springlotto.comm.constant.MessageEnum;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
@@ -21,6 +21,19 @@ public class PcgUtil {
             i++;
         }
         return result;
+    }
+
+    public String toEnum(String codeType) {
+        if (
+            codeType == null
+            || (codeType.length() <= 0 && 5 < codeType.length())
+        ) return "";
+        try {
+            return String.valueOf(MessageEnum.valueOf(codeType));
+        }
+        catch (Exception e) {
+            return "";
+        }
     }
 
 }

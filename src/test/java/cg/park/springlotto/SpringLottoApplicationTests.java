@@ -10,6 +10,7 @@ import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.services.impl.TestNumberServiceImpl;
 import cg.park.springlotto.utils.Lotto;
 import cg.park.springlotto.utils.Param;
+import cg.park.springlotto.utils.PcgUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -110,11 +111,17 @@ class SpringLottoApplicationTests {
         System.out.println(result);
     }
 
-    MessageEnum me;
+
+    // -----------------------------
+    // Enum 테스트
+    @Autowired
+    PcgUtil pcgUtil;
 
     @Test
     public void EnumTest() {
-        System.out.println(me.S0001);
-        System.out.println(me.P0001);
+        System.out.println("EnumTest 시작");
+        String str = pcgUtil.toEnum("F0001");
+        System.out.println(str);
+        System.out.println("EnumTest 종료");
     }
 }
