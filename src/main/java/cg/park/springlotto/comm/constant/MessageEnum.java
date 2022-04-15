@@ -7,12 +7,11 @@ public enum MessageEnum {
 
     // Parameter 유효성 미검증 코드
     ,P0001 ("P0001")
-    ,P0002 ("P0001")
+    ,P0002 ("P0002")
 
     // Error 코드
     ,E0001 ("E0001")
-
-    ;
+    ;// 마무리 세미콜론
 
     private final String codeType;
 

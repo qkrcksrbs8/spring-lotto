@@ -25,16 +25,16 @@ public class LottoController {
     @Autowired
     TestNumberServiceImpl testNumberService;
 
+    // 단일 로또 번호 조회
     @GetMapping("/number")
     public Message number() {
-        Message result = testNumberService.execute(new Param().set("count", 1));
-        return result;
+        return testNumberService.execute(new Param().set("count", 1));
     }
 
+    // 다중 로또 번호 조회
     @GetMapping("/number/{count}")
     public Message manyNumber(@RequestParam int count) {
-        Message result = testNumberService.execute(new Param().set("count", count));
-        return result;
+        return testNumberService.execute(new Param().set("count", count));
     }
 
     @GetMapping("/ask")
