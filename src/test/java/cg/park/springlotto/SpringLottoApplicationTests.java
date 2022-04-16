@@ -1,14 +1,10 @@
 package cg.park.springlotto;
 
-import cg.park.springlotto.comm.constant.MessageEnum;
-import cg.park.springlotto.daos.LottoDao;
 import cg.park.springlotto.daos.MessageDao;
 import cg.park.springlotto.daos.UserDao;
 import cg.park.springlotto.models.Message;
 import cg.park.springlotto.models.User;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
-import cg.park.springlotto.services.impl.TestNumberServiceImpl;
-import cg.park.springlotto.utils.Lotto;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
 import org.junit.jupiter.api.Test;
@@ -84,33 +80,44 @@ class SpringLottoApplicationTests {
         }
     }
 
-
-    //----------------------------------------
-    //로또번호 출력 테스트
     @Autowired
     LottoServiceImpl lottoServiceimpl;
 
-    @Test
-    public void lotto() {
-        int count = 1 ;
 
-        Param param = new Param().set("count", count);
-        String preCode = lottoServiceimpl.pre(param);
-        if (!preCode.startsWith("S")) ;
-        Param excute = lottoServiceimpl.execute(param);
-        System.out.println(excute);
-    }
-
-
-    @Autowired
-    TestNumberServiceImpl testNumberService;
-
+    // 단일 로또 테스트
     @Test
     public void TestNum() {
-        Message result = testNumberService.execute(new Param().set("count", 1));
+        Message result = lottoServiceimpl.execute(new Param().set("count", 1));
         System.out.println(result);
     }
 
+    // count가 0일 때
+    @Test
+    public void errorCaseTestNum0() {
+        Message result = lottoServiceimpl.execute(new Param().set("count", 0));
+        System.out.println(result);
+    }
+
+    // count가 음수일 때
+    @Test
+    public void errorCaseTestMinor() {
+        Message result = lottoServiceimpl.execute(new Param().set("count", -1));
+        System.out.println(result);
+    }
+
+    // 다중 로또 테스트
+    @Test
+    public void MultiTestNum() {
+        Message result = lottoServiceimpl.execute(new Param().set("count", 5));
+        System.out.println(result);
+    }
+
+    // 다중 로또 테스트 5개 초과일 때
+    @Test
+    public void MultiTestNumOver() {
+        Message result = lottoServiceimpl.execute(new Param().set("count", 10));
+        System.out.println(result);
+    }
 
     // -----------------------------
     // Enum 테스트
