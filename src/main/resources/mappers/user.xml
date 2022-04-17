@@ -7,4 +7,37 @@
     <select id="allUser" resultType="cg.park.springlotto.models.User">
         SELECT * FROM User
     </select>
+
+    <insert id="insertUserLottoHistory" parameterType="userLottoHistory">
+        insert into userLottoHistory (
+              groupNo
+            , memberNo
+            , memberFlag
+            , firstNo
+            , secondNo
+            , thirdNo
+            , forthNo
+            , fifthNo
+            , round
+            , createdDate
+            , createdUser
+            , updateDate
+            , updateUser
+        )
+        values (
+              #{groupNo}
+            , #{memberNo}
+            , #{memberFlag}
+            , #{firstNo}
+            , #{secondNo}
+            , #{thirdNo}
+            , #{forthNo}
+            , #{fifthNo}
+            , #{round}
+            , #{createdDate}
+            , #{createdUser}
+            , #{updateDate}
+            , #{updateUser}
+       );
+    </insert>
 </mapper>
