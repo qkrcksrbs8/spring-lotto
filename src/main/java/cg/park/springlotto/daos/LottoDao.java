@@ -1,10 +1,8 @@
 package cg.park.springlotto.daos;
-import cg.park.springlotto.models.User;
+import cg.park.springlotto.models.UserLottoHistoryVo;
 import org.apache.ibatis.annotations.Mapper;
-
-import java.util.List;
 
 @Mapper
 public interface LottoDao {
-    List<User> allUser();
+    int insertUserLottoHistory(UserLottoHistoryVo userLottoHistory);
 }

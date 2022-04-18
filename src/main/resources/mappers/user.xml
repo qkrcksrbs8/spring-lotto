@@ -4,40 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="cg.park.springlotto.daos.UserDao">
-    <select id="allUser" resultType="cg.park.springlotto.models.User">
+    <select id="allUser" resultType="cg.park.springlotto.models.UserVo">
         SELECT * FROM User
     </select>
-
-    <insert id="insertUserLottoHistory" parameterType="userLottoHistory">
-        insert into userLottoHistory (
-              groupNo
-            , memberNo
-            , memberFlag
-            , firstNo
-            , secondNo
-            , thirdNo
-            , forthNo
-            , fifthNo
-            , round
-            , createdDate
-            , createdUser
-            , updateDate
-            , updateUser
-        )
-        values (
-              #{groupNo}
-            , #{memberNo}
-            , #{memberFlag}
-            , #{firstNo}
-            , #{secondNo}
-            , #{thirdNo}
-            , #{forthNo}
-            , #{fifthNo}
-            , #{round}
-            , #{createdDate}
-            , #{createdUser}
-            , #{updateDate}
-            , #{updateUser}
-       );
-    </insert>
 </mapper>

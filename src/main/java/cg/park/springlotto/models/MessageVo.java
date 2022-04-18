@@ -4,7 +4,7 @@ import cg.park.springlotto.utils.Param;
 import lombok.Data;
 
 @Data
-public class Message {
+public class MessageVo {
     private Param data;
     private String code;
     private String message;

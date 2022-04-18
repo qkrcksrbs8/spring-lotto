@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cg.park.springlotto.daos.LottoDao">
+    <insert id="insertUserLottoHistory" parameterType="cg.park.springlotto.models.UserLottoHistoryVo">
+        insert into userLottoHistory (
+              groupNo
+            , memberNo
+            , memberFlag
+            , firstNo
+            , secondNo
+            , thirdNo
+            , forthNo
+            , fifthNo
+            , round
+            , createdDate
+            , createdUser
+            , updateDate
+            , updateUser
+        )
+        values
+        <foreach collection="lottoNumbers" item="i" separator=",">
+            (
+                  #{i.groupNo}
+                , #{memberNo}
+                , #{memberFlag}
+                , #{i.firstNo}
+                , #{i.secondNo}
+                , #{i.thirdNo}
+                , #{i.forthNo}
+                , #{i.fifthNo}
+                , #{round}
+                , NOW()
+                , #{createdUser}
+                , NOW()
+                , #{updateUser}
+            )
+        </foreach>
+
+    </insert>
+</mapper>

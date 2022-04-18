@@ -1,9 +1,9 @@
 package cg.park.springlotto.daos;
 
-import cg.park.springlotto.models.Message;
+import cg.park.springlotto.models.MessageVo;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface MessageDao {
-    Message selectMessage(String code);
+    MessageVo selectMessage(String code);
 }
