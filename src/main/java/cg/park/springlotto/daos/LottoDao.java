@@ -4,5 +4,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface LottoDao {
-    int insertUserLottoHistory(UserLottoHistoryVo userLottoHistory);
+    int saveUserLottoHistory(UserLottoHistoryVo userLottoHistory);
 }
