@@ -10,4 +10,5 @@ public class LottoNumberVo {
     private int thirdNo;
     private int forthNo;
     private int fifthNo;
+    private int sixthNo;
 }

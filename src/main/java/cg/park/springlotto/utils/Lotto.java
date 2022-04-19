@@ -15,15 +15,15 @@ public class Lotto {
         while (count --> 0) lotto.add(getLotto());
         return lotto;
     }
-    public List<Set<Integer>> getLottos() {
-        List<Set<Integer>> lotto = new ArrayList<>();
-        lotto.add(getLotto());
-        return lotto;
-    }
+//    public List<Set<Integer>> getLottos() {
+//        List<Set<Integer>> lotto = new ArrayList<>();
+//        lotto.add(getLotto());
+//        return lotto;
+//    }
 
     private Set<Integer> getLotto() {
         Set<Integer> number = new HashSet<>();
-        while (number.size() < 5) number.add((int)(Math.random() * 45)+1);
+        while (number.size() < 6) number.add((int)(Math.random() * 45)+1);
         return number;
     }
 }

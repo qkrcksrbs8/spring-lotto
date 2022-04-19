@@ -14,6 +14,7 @@
             , thirdNo
             , forthNo
             , fifthNo
+            , sixthNo
             , round
             , createdDate
             , createdUser
@@ -31,6 +32,7 @@
                 , #{i.thirdNo}
                 , #{i.forthNo}
                 , #{i.fifthNo}
+                , #{i.sixthNo}
                 , #{round}
                 , NOW()
                 , #{createdUser}

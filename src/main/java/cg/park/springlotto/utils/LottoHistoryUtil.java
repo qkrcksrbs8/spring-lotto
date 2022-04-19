@@ -7,10 +7,7 @@ import cg.park.springlotto.models.UserLottoHistoryVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Configuration
@@ -24,7 +21,9 @@ public class LottoHistoryUtil {
         List<Set<Integer>> number           = (List<Set<Integer>>) messageVo.getData().get("numbers");
         AtomicInteger cnt                   = new AtomicInteger();
         number.stream().forEach(nums -> {
-            Iterator<Integer> num = nums.iterator();
+            List numList = new ArrayList(nums);
+            Collections.sort(numList);
+            Iterator<Integer> num = numList.iterator();
             while(num.hasNext()) {
                 LottoNumberVo lottoNumber = new LottoNumberVo();
                 lottoNumber.setGroupNo(cnt.getAndIncrement()+1);
@@ -33,6 +32,7 @@ public class LottoHistoryUtil {
                 lottoNumber.setThirdNo(num.next());
                 lottoNumber.setForthNo(num.next());
                 lottoNumber.setFifthNo(num.next());
+                lottoNumber.setSixthNo(num.next());
                 lottoNumbers.add(lottoNumber);
             }
         });
