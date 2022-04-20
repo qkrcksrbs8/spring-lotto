@@ -70,6 +70,52 @@
     </update>
 
     <select id="selectHistoryCount" resultType="cg.park.springlotto.models.HistoryCountDto">
-        select * from historyCount
+        select
+            (no1/round) * 100 as no1
+             ,(no2/round) * 100 as no2
+             ,(no3/round) * 100 as no3
+             ,(no4/round) * 100 as no4
+             ,(no5/round) * 100 as no5
+             ,(no6/round) * 100 as no6
+             ,(no7/round) * 100 as no7
+             ,(no8/round) * 100 as no8
+             ,(no9/round) * 100 as no9
+             ,(no10/round) * 100 as no10
+             ,(no11/round) * 100 as no11
+             ,(no12/round) * 100 as no12
+             ,(no13/round) * 100 as no13
+             ,(no14/round) * 100 as no14
+             ,(no15/round) * 100 as no15
+             ,(no16/round) * 100 as no16
+             ,(no17/round) * 100 as no17
+             ,(no18/round) * 100 as no18
+             ,(no19/round) * 100 as no19
+             ,(no20/round) * 100 as no20
+             ,(no21/round) * 100 as no21
+             ,(no22/round) * 100 as no22
+             ,(no23/round) * 100 as no23
+             ,(no24/round) * 100 as no24
+             ,(no25/round) * 100 as no25
+             ,(no26/round) * 100 as no26
+             ,(no27/round) * 100 as no27
+             ,(no28/round) * 100 as no28
+             ,(no29/round) * 100 as no29
+             ,(no30/round) * 100 as no30
+             ,(no31/round) * 100 as no31
+             ,(no32/round) * 100 as no32
+             ,(no33/round) * 100 as no33
+             ,(no34/round) * 100 as no34
+             ,(no35/round) * 100 as no35
+             ,(no36/round) * 100 as no36
+             ,(no37/round) * 100 as no37
+             ,(no38/round) * 100 as no38
+             ,(no39/round) * 100 as no39
+             ,(no40/round) * 100 as no40
+             ,(no41/round) * 100 as no41
+             ,(no42/round) * 100 as no42
+             ,(no43/round) * 100 as no43
+             ,(no44/round) * 100 as no44
+             ,(no45/round) * 100 as no45
+        from historyCount
     </select>
 </mapper>
