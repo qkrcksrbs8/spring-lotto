@@ -68,4 +68,8 @@
           ,no45 = #{no45}
         where 1=1
     </update>
+
+    <select id="selectHistoryCount" resultType="cg.park.springlotto.models.HistoryCountDto">
+        select * from historyCount
+    </select>
 </mapper>

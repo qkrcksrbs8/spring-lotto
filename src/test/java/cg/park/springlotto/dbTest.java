@@ -2,6 +2,7 @@ package cg.park.springlotto;
 
 import cg.park.springlotto.daos.HistoryDao;
 import cg.park.springlotto.daos.LottoDao;
+import cg.park.springlotto.models.HistoryCountDto;
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.models.UserLottoHistoryDto;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
@@ -133,4 +134,12 @@ public class dbTest {
         System.out.println(map);
         System.out.println("end");
     }
+
+    // 로또번호 당첨 퍼센트
+    @Test
+    public void lottoPercentage() {
+        HistoryCountDto historyCount = historyDao.selectHistoryCount();
+        System.out.println(historyCount.toString());
+    }
+
 }
