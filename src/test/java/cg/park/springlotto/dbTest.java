@@ -1,14 +1,17 @@
 package cg.park.springlotto;
 
+import cg.park.springlotto.daos.HistoryDao;
 import cg.park.springlotto.daos.LottoDao;
-import cg.park.springlotto.models.MessageVo;
-import cg.park.springlotto.models.UserLottoHistoryVo;
+import cg.park.springlotto.models.MessageDto;
+import cg.park.springlotto.models.UserLottoHistoryDto;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.utils.LottoHistoryUtil;
 import cg.park.springlotto.utils.Param;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import java.util.HashMap;
 
 @SpringBootTest
 public class dbTest {
@@ -41,8 +44,8 @@ public class dbTest {
 //                                    .round(1)
 //                                    .createdUser("admin")
 //                                    .updateUser("admin");
-            MessageVo result = lottoServiceimpl.execute(new Param().set("count", 1));
-            UserLottoHistoryVo userLottoHistory = new UserLottoHistoryVo();
+            MessageDto result = lottoServiceimpl.execute(new Param().set("count", 1));
+            UserLottoHistoryDto userLottoHistory = new UserLottoHistoryDto();
             userLottoHistory.setMemberNo(1);
             userLottoHistory.setMemberFlag("1");
             userLottoHistory.setRound(1);
@@ -62,8 +65,8 @@ public class dbTest {
         System.out.println("insertUserLottoHistoryTest");
 
         try {
-            MessageVo result = lottoServiceimpl.execute(new Param().set("count", 5));
-            UserLottoHistoryVo userLottoHistory = new UserLottoHistoryVo();
+            MessageDto result = lottoServiceimpl.execute(new Param().set("count", 5));
+            UserLottoHistoryDto userLottoHistory = new UserLottoHistoryDto();
             userLottoHistory.setMemberNo(1);
             userLottoHistory.setMemberFlag("1");
             userLottoHistory.setRound(1);
@@ -84,7 +87,7 @@ public class dbTest {
     @Test
     public void singleLottoTest() {
         System.out.println("singleLottoTest");
-        MessageVo messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
+        MessageDto messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
         System.out.println("end");
     }
 
@@ -92,7 +95,7 @@ public class dbTest {
     @Test
     public void MultiLottoTest() {
         System.out.println("MultiLottoTest");
-        MessageVo messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 5)));
+        MessageDto messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 5)));
         System.out.println("end");
     }
 
@@ -100,8 +103,34 @@ public class dbTest {
     @Test
     public void MultiLottoErrorTest() {
         System.out.println("MultiLottoTest");
-        MessageVo messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 10)));
+        MessageDto messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 10)));
         System.out.println("end");
     }
 
+
+    @Autowired
+    HistoryDao historyDao;
+
+    // 로또 역대 당첨 횟수 1개
+    @Test
+    public void historyCountTest() {
+        System.out.println("historyCountTest");
+        int count = historyDao.historyCount(3);
+        System.out.println(count);
+        System.out.println("end");
+    }
+
+    // 로또 역대 당첨 횟수 여러개
+    @Test
+    public void multiHistoryCountTest() {
+        System.out.println("multiHistoryCountTest");
+        HashMap<String, Integer> map = new HashMap<>();
+        for (int i = 1; i <= 45; i++) {
+            map.put("no"+i, historyDao.historyCount(i));
+        }
+        map.put("round", 1011);
+        historyDao.updateHistoryCount(map);
+        System.out.println(map);
+        System.out.println("end");
+    }
 }

@@ -5,11 +5,11 @@ import lombok.*;
 import java.util.List;
 
 @Data
-public class UserLottoHistoryVo {
+public class UserLottoHistoryDto {
     private int memberNo;
     private String memberFlag;
     private int round;
-    private List<LottoNumberVo> lottoNumbers;
+    private List<LottoNumberDto> lottoNumbers;
     private String createdDate;
     private String createdUser;
     private String updateDate;

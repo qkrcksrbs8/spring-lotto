@@ -2,8 +2,8 @@ package cg.park.springlotto;
 
 import cg.park.springlotto.daos.MessageDao;
 import cg.park.springlotto.daos.UserDao;
-import cg.park.springlotto.models.MessageVo;
-import cg.park.springlotto.models.UserVo;
+import cg.park.springlotto.models.MessageDto;
+import cg.park.springlotto.models.UserDto;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
@@ -60,7 +60,7 @@ class SpringLottoApplicationTests {
         System.out.println("allUser");
 
         try {
-            List<UserVo> users = userDao.allUser();
+            List<UserDto> users = userDao.allUser();
             System.out.println(users.size());
         } catch (Exception e) {
             e.printStackTrace();
@@ -74,7 +74,7 @@ class SpringLottoApplicationTests {
     public void megTest() {
         System.out.println("Message");
         try {
-            MessageVo message = messageDao.selectMessage("S0001");
+            MessageDto message = messageDao.selectMessage("S0001");
             System.out.println(message.getMessage());
         } catch (Exception e) {
             e.printStackTrace();
@@ -88,35 +88,35 @@ class SpringLottoApplicationTests {
     // 단일 로또 테스트
     @Test
     public void TestNum() {
-        MessageVo result = lottoServiceimpl.execute(new Param().set("count", 1));
+        MessageDto result = lottoServiceimpl.execute(new Param().set("count", 1));
         System.out.println(result);
     }
 
     // count가 0일 때
     @Test
     public void errorCaseTestNum0() {
-        MessageVo result = lottoServiceimpl.execute(new Param().set("count", 0));
+        MessageDto result = lottoServiceimpl.execute(new Param().set("count", 0));
         System.out.println(result);
     }
 
     // count가 음수일 때
     @Test
     public void errorCaseTestMinor() {
-        MessageVo result = lottoServiceimpl.execute(new Param().set("count", -1));
+        MessageDto result = lottoServiceimpl.execute(new Param().set("count", -1));
         System.out.println(result);
     }
 
     // 다중 로또 테스트
     @Test
     public void MultiTestNum() {
-        MessageVo result = lottoServiceimpl.execute(new Param().set("count", 5));
+        MessageDto result = lottoServiceimpl.execute(new Param().set("count", 5));
         System.out.println(result);
     }
 
     // 다중 로또 테스트 5개 초과일 때
     @Test
     public void MultiTestNumOver() {
-        MessageVo result = lottoServiceimpl.execute(new Param().set("count", 10));
+        MessageDto result = lottoServiceimpl.execute(new Param().set("count", 10));
         System.out.println(result);
     }
 

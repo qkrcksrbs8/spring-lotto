@@ -9,7 +9,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserVo {
+public class UserDto {
     private int seq;
     private String name;
     private String age;

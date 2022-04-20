@@ -1,6 +1,6 @@
 package cg.park.springlotto.cotrollers;
 
-import cg.park.springlotto.models.MessageVo;
+import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.utils.LottoHistoryUtil;
 import cg.park.springlotto.utils.Param;
@@ -23,19 +23,19 @@ public class LottoController {
 
     // 단일 로또 번호 조회
     @GetMapping("/number")
-    public MessageVo number() {
+    public MessageDto number() {
         return historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
     }
 
     // 다중 로또 번호 조회
     @GetMapping("/number/{count}")
-    public MessageVo manyNumber(@PathVariable("count") int count) {
+    public MessageDto manyNumber(@PathVariable("count") int count) {
         return historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", count)));
     }
 
     @GetMapping("/ask")
-    public ResponseEntity<MessageVo> ask() {
-        MessageVo result = lottoServiceimpl.execute(new Param().set("count", 1));
+    public ResponseEntity<MessageDto> ask() {
+        MessageDto result = lottoServiceimpl.execute(new Param().set("count", 1));
         HttpStatus status = HttpStatus.OK;
         return new ResponseEntity<>(result, status);
     }

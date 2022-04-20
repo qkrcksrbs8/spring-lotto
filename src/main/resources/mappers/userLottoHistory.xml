@@ -3,43 +3,69 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="cg.park.springlotto.daos.LottoDao">
-    <insert id="saveUserLottoHistory" parameterType="cg.park.springlotto.models.UserLottoHistoryVo">
-        insert into userLottoHistory (
-              groupNo
-            , memberNo
-            , memberFlag
-            , firstNo
-            , secondNo
-            , thirdNo
-            , forthNo
-            , fifthNo
-            , sixthNo
-            , round
-            , createdDate
-            , createdUser
-            , updateDate
-            , updateUser
-        )
-        values
-        <foreach collection="lottoNumbers" item="i" separator=",">
-            (
-                  #{i.groupNo}
-                , #{memberNo}
-                , #{memberFlag}
-                , #{i.firstNo}
-                , #{i.secondNo}
-                , #{i.thirdNo}
-                , #{i.forthNo}
-                , #{i.fifthNo}
-                , #{i.sixthNo}
-                , #{round}
-                , NOW()
-                , #{createdUser}
-                , NOW()
-                , #{updateUser}
-            )
-        </foreach>
+<mapper namespace="cg.park.springlotto.daos.HistoryDao">
+    <select id="historyCount" parameterType="int" resultType="int">
+        select count(a.round) cnt
+        from (
+                 select round from lottoHistory where firstNo = #{number} union all
+                 select round from lottoHistory where secondNo = #{number} union all
+                 select round from lottoHistory where thirdNo = #{number} union all
+                 select round from lottoHistory where forthNo = #{number} union all
+                 select round from lottoHistory where fifthNo = #{number} union all
+                 select round from lottoHistory where sixthNo = #{number} union all
+                 select round from lottoHistory where bonusNo = #{number}
+         ) a
+    </select>
 
-    </insert>
+    <update id="updateHistoryCount" parameterType="java.util.HashMap">
+        update historyCount
+        set
+           round = #{round}
+          ,no1 = #{no1}
+          ,no2 = #{no2}
+          ,no3 = #{no3}
+          ,no4 = #{no4}
+          ,no5 = #{no5}
+          ,no6 = #{no6}
+          ,no7 = #{no7}
+          ,no8 = #{no8}
+          ,no9 = #{no9}
+          ,no10 = #{no10}
+          ,no11 = #{no11}
+          ,no12 = #{no12}
+          ,no13 = #{no13}
+          ,no14 = #{no14}
+          ,no15 = #{no15}
+          ,no16 = #{no16}
+          ,no17 = #{no17}
+          ,no18 = #{no18}
+          ,no19 = #{no19}
+          ,no20 = #{no20}
+          ,no21 = #{no21}
+          ,no22 = #{no22}
+          ,no23 = #{no23}
+          ,no24 = #{no24}
+          ,no25 = #{no25}
+          ,no26 = #{no26}
+          ,no27 = #{no27}
+          ,no28 = #{no28}
+          ,no29 = #{no29}
+          ,no30 = #{no30}
+          ,no31 = #{no31}
+          ,no32 = #{no32}
+          ,no33 = #{no33}
+          ,no34 = #{no34}
+          ,no35 = #{no35}
+          ,no36 = #{no36}
+          ,no37 = #{no37}
+          ,no38 = #{no38}
+          ,no39 = #{no39}
+          ,no40 = #{no40}
+          ,no41 = #{no41}
+          ,no42 = #{no42}
+          ,no43 = #{no43}
+          ,no44 = #{no44}
+          ,no45 = #{no45}
+        where 1=1
+    </update>
 </mapper>
