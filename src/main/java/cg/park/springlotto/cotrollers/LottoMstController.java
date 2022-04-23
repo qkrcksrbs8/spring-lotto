@@ -2,6 +2,7 @@ package cg.park.springlotto.cotrollers;
 
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.services.impl.LottoMstServiceImpl;
+import cg.park.springlotto.services.impl.ThisWeekServiceImpl;
 import cg.park.springlotto.utils.LottoHistoryUtil;
 import cg.park.springlotto.utils.Param;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,14 +22,17 @@ public class LottoMstController {
     @Autowired
     LottoMstServiceImpl lottoMstService;
 
-    @GetMapping("/thisWeek")
-    public Param thisWeek() {
-        return new Param();
+    @Autowired
+    ThisWeekServiceImpl thisWeekService;
+
+    @GetMapping("/thisweek")
+    public MessageDto thisWeek() {
+        return thisWeekService.execute(new Param());
     }
 
     @GetMapping("/history")
     public MessageDto historyList() {
-        return historyUtil.resProxy(lottoMstService.execute(new Param()));
+        return lottoMstService.execute(new Param());
     }
 
 }

@@ -4,6 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="cg.park.springlotto.daos.HistoryDao">
+
+    <select id="thisWeek" resultType="cg.park.springlotto.utils.Param">
+        select round, firstNo, secondNo, thirdNo, forthNo, fifthNo, sixthNo, bonusNo
+        from lottoHistory
+        order by round desc
+        limit 1
+    </select>
+
     <select id="historyCount" parameterType="int" resultType="int">
         select count(a.round) cnt
         from (

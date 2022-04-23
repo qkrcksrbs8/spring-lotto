@@ -43,14 +43,22 @@ class SpringLottoApplicationTests {
         System.out.println("testConnection");
         // DBMS에게 DB 연결 드라이버의 위치를 알려주기 위한 메소드
         Class.forName(DRIVER);
-        try {
-            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+        try (Connection connection = DriverManager.getConnection(URL, USER, PASSWORD)) {
             System.out.println(connection);
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
 
+        Connection connection;
+        if (1 == 1) {
+            connection = null;
+        }
+        else {
+            connection = null;
+        }
+        System.out.println(connection);
+
+    }
 
     @Autowired
     UserDao userDao;

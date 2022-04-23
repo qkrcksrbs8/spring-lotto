@@ -142,4 +142,10 @@ public class dbTest {
         System.out.println(historyCount.toString());
     }
 
+    @Test
+    public void thisWeekTest() {
+        Param param = historyDao.thisWeek();
+        System.out.println(param.toString());
+    }
+
 }
