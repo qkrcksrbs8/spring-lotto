@@ -11,11 +11,11 @@ public abstract class Command {
     MessageUtil messageUtil;
 
     public final MessageDto execute(Param param) {
-        Param preResult = pre(param);
+        Param preResult = preService(param);
         if (!((String) preResult.get("code")).startsWith("S")) return messageUtil.resMessage(preResult);
-        Param postResult = post(param);
+        Param postResult = postService(param);
         return messageUtil.resMessage(postResult);
     };
-    public abstract Param pre(Param param);
-    public abstract Param post(Param param);
+    public abstract Param preService(Param param);
+    public abstract Param postService(Param param);
 }

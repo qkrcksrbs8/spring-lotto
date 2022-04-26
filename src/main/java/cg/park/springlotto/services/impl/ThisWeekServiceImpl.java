@@ -16,11 +16,11 @@ public class ThisWeekServiceImpl extends Command {
     @Autowired
     HistoryDao historyDao;
 
-    public Param pre(Param param) {
+    public Param preService(Param param) {
         return new Param().set("code", pcgUtil.toEnum("S0001"));
     }
 
-    public Param post(Param param) {
+    public Param postService(Param param) {
         Param thisWeekNumbers = historyDao.thisWeek();
         return new Param().set("code", pcgUtil.toEnum("S0001")).set("thisWeekNumbers", thisWeekNumbers);
     }

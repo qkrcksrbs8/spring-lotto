@@ -17,11 +17,11 @@ public class LottoMstServiceImpl extends Command {
     @Autowired
     HistoryDao historyDao;
 
-    public Param pre(Param param) {
+    public Param preService(Param param) {
         return new Param().set("code", pcgUtil.toEnum("S0001"));
     }
 
-    public Param post(Param param) {
+    public Param postService(Param param) {
         HistoryCountDto historyCount = historyDao.selectHistoryCount();
         return new Param().set("code", pcgUtil.toEnum("S0001")).set("lottoPercentage", historyCount);
     }

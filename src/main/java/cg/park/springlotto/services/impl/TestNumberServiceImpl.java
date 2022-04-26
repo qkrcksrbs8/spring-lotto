@@ -19,13 +19,13 @@ public class TestNumberServiceImpl extends Command {
     @Autowired
     PcgUtil pcgUtil;
 
-    public Param pre(Param param) {
+    public Param preService(Param param) {
         int count = Integer.parseInt(String.valueOf(param.get("count")));
         if (0 > count || 5 < count) return new Param().set("code", pcgUtil.toEnum("P0001"));
         return new Param().set("code", pcgUtil.toEnum("S0001"));
     }
 
-    public Param post(Param param) {
+    public Param postService(Param param) {
         List<Set<Integer>> numbers = lotto.getLottos(Integer.parseInt(String.valueOf(param.get("count"))));
         if (numbers.size() == 0) return new Param().set("code", pcgUtil.toEnum("P0002"));
         return new Param().set("code", pcgUtil.toEnum("S0001")).set("numbers", numbers);
