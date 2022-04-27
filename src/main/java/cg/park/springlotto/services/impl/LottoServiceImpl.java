@@ -1,8 +1,7 @@
 package cg.park.springlotto.services.impl;
 
-import cg.park.springlotto.services.Command;
-import cg.park.springlotto.services.Execute;
-import cg.park.springlotto.utils.Lotto;
+import cg.park.springlotto.services.CommandService;
+import cg.park.springlotto.utils.DrawNumbersUtil;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +11,9 @@ import java.util.List;
 import java.util.Set;
 
 @Service
-public class LottoServiceImpl extends Command {
+public class LottoServiceImpl extends CommandService {
     @Autowired
-    Lotto lotto;
+    DrawNumbersUtil draw;
 
     @Autowired
     PcgUtil pcgUtil;
@@ -26,7 +25,7 @@ public class LottoServiceImpl extends Command {
     }
 
     public Param postService(Param param) {
-        List<Set<Integer>> numbers = lotto.getLottos(Integer.parseInt(String.valueOf(param.get("count"))));
+        List<Set<Integer>> numbers = draw.getLottos(Integer.parseInt(String.valueOf(param.get("count"))));
         if (numbers.size() == 0) return new Param().set("code", pcgUtil.toEnum("P0002"));
         return new Param().set("code", pcgUtil.toEnum("S0001")).set("numbers", numbers);
     }

@@ -2,14 +2,14 @@ package cg.park.springlotto.services.impl;
 
 import cg.park.springlotto.daos.HistoryDao;
 import cg.park.springlotto.models.HistoryCountDto;
-import cg.park.springlotto.services.Command;
+import cg.park.springlotto.services.CommandService;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class LottoMstServiceImpl extends Command {
+public class LottoMstServiceImpl extends CommandService {
 
     @Autowired
     PcgUtil pcgUtil;

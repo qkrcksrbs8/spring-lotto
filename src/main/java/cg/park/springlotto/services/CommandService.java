@@ -5,7 +5,7 @@ import cg.park.springlotto.utils.MessageUtil;
 import cg.park.springlotto.utils.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public abstract class Command {
+public abstract class CommandService {
 
     @Autowired
     MessageUtil messageUtil;

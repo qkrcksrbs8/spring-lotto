@@ -51,7 +51,7 @@ public class LottoHistoryUtil {
         return userLottoHistory;
     }
 
-    private void saveMessageHistory (MessageDto messageVo) {
+    public void saveMessageHistory (MessageDto messageVo) {
         historyDao.saveUserLottoHistory(setUserInfo(messageVo));
     }
 

@@ -1,5 +1,6 @@
 package cg.park.springlotto.cotrollers;
 
+import cg.park.springlotto.comm.SaveProxy;
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.utils.LottoHistoryUtil;
@@ -21,10 +22,13 @@ public class LottoController {
     @Autowired
     LottoHistoryUtil historyUtil;
 
+    @Autowired
+    SaveProxy proxy;
+
     // 단일 로또 번호 조회
     @GetMapping("/number")
     public MessageDto number() {
-        return historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
+        return proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
     }
 
     // 다중 로또 번호 조회

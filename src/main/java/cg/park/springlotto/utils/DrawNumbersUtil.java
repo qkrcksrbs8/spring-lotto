@@ -1,6 +1,5 @@
 package cg.park.springlotto.utils;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
@@ -9,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Configuration
-public class Lotto {
+public class DrawNumbersUtil {
     public List<Set<Integer>> getLottos(int count) {
         List<Set<Integer>> lotto = new ArrayList<>();
         while (count --> 0) lotto.add(getLotto());

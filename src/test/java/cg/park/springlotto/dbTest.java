@@ -1,5 +1,6 @@
 package cg.park.springlotto;
 
+import cg.park.springlotto.comm.SaveProxy;
 import cg.park.springlotto.daos.HistoryDao;
 import cg.park.springlotto.daos.LottoDao;
 import cg.park.springlotto.models.HistoryCountDto;
@@ -84,11 +85,15 @@ public class dbTest {
     @Autowired
     LottoHistoryUtil historyUtil;
 
+
+    @Autowired
+    SaveProxy proxy;
+
     // 단일 로또 API 테스트
     @Test
     public void singleLottoTest() {
         System.out.println("singleLottoTest");
-        MessageDto messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
+        MessageDto messageVo = proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
         System.out.println("end");
     }
 

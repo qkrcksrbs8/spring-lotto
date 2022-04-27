@@ -1,7 +1,7 @@
 package cg.park.springlotto.services.impl;
 
-import cg.park.springlotto.services.Command;
-import cg.park.springlotto.utils.Lotto;
+import cg.park.springlotto.services.CommandService;
+import cg.park.springlotto.utils.DrawNumbersUtil;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +12,9 @@ import java.util.Set;
 
 
 @Service
-public class TestNumberServiceImpl extends Command {
+public class TestNumberServiceImpl extends CommandService {
     @Autowired
-    Lotto lotto;
+    DrawNumbersUtil lotto;
 
     @Autowired
     PcgUtil pcgUtil;
