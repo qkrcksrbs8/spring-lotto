@@ -5,6 +5,45 @@
 
 <mapper namespace="cg.park.springlotto.daos.HistoryDao">
 
+    <insert id="saveUserLottoHistory" parameterType="cg.park.springlotto.models.UserLottoHistoryDto">
+        insert into userLottoHistory (
+        groupNo
+        , memberNo
+        , memberFlag
+        , firstNo
+        , secondNo
+        , thirdNo
+        , forthNo
+        , fifthNo
+        , sixthNo
+        , round
+        , createdDate
+        , createdUser
+        , updateDate
+        , updateUser
+        )
+        values
+        <foreach collection="lottoNumbers" item="i" separator=",">
+            (
+            #{i.groupNo}
+            , #{memberNo}
+            , #{memberFlag}
+            , #{i.firstNo}
+            , #{i.secondNo}
+            , #{i.thirdNo}
+            , #{i.forthNo}
+            , #{i.fifthNo}
+            , #{i.sixthNo}
+            , #{round}
+            , NOW()
+            , #{createdUser}
+            , NOW()
+            , #{updateUser}
+            )
+        </foreach>
+
+    </insert>
+
     <select id="thisWeek" resultType="cg.park.springlotto.utils.Param">
         select round, firstNo, secondNo, thirdNo, forthNo, fifthNo, sixthNo, bonusNo
         from lottoHistory

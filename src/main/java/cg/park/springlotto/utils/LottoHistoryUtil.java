@@ -1,5 +1,6 @@
 package cg.park.springlotto.utils;
 
+import cg.park.springlotto.daos.HistoryDao;
 import cg.park.springlotto.daos.LottoDao;
 import cg.park.springlotto.models.LottoNumberDto;
 import cg.park.springlotto.models.MessageDto;
@@ -14,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class LottoHistoryUtil {
 
     @Autowired
-    LottoDao lottoDao;
+    HistoryDao historyDao;
 
     public List<LottoNumberDto> setLottoNumbers(MessageDto messageVo) {
         List<LottoNumberDto> lottoNumbers    = new ArrayList<>();
@@ -51,7 +52,7 @@ public class LottoHistoryUtil {
     }
 
     private void saveMessageHistory (MessageDto messageVo) {
-        lottoDao.saveUserLottoHistory(setUserInfo(messageVo));
+        historyDao.saveUserLottoHistory(setUserInfo(messageVo));
     }
 
     public MessageDto resProxy(MessageDto messageVo) {
