@@ -20,9 +20,6 @@ public class LottoController {
     LottoServiceImpl lottoServiceimpl;
 
     @Autowired
-    LottoHistoryUtil historyUtil;
-
-    @Autowired
     SaveProxy proxy;
 
     // 단일 로또 번호 조회
@@ -34,7 +31,7 @@ public class LottoController {
     // 다중 로또 번호 조회
     @GetMapping("/number/{count}")
     public MessageDto manyNumber(@PathVariable("count") int count) {
-        return historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", count)));
+        return proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", count)));
     }
 
     @GetMapping("/ask")

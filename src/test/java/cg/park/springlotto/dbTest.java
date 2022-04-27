@@ -83,34 +83,39 @@ public class dbTest {
 
 
     @Autowired
-    LottoHistoryUtil historyUtil;
-
-
-    @Autowired
     SaveProxy proxy;
+
+    public void PrintMessageDto (MessageDto messageDto) {
+        System.out.println("========== START Print Message ==========");
+        System.out.println(messageDto.getCode());
+        System.out.println(messageDto.getMessage());
+        System.out.println(messageDto.getData().toString());
+        System.out.println("========== E N D Print Message ==========");
+    }
 
     // 단일 로또 API 테스트
     @Test
     public void singleLottoTest() {
         System.out.println("singleLottoTest");
-        MessageDto messageVo = proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
-        System.out.println("end");
+        MessageDto messageDto = proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
+        PrintMessageDto(messageDto);
     }
 
     // 다중 로또 API 테스트
     @Test
     public void MultiLottoTest() {
         System.out.println("MultiLottoTest");
-        MessageDto messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 5)));
-        System.out.println("end");
+        MessageDto messageDto = proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 5)));
+        PrintMessageDto(messageDto);
     }
+
 
     // 다중 로또 API 오류 테스트
     @Test
     public void MultiLottoErrorTest() {
         System.out.println("MultiLottoTest");
-        MessageDto messageVo = historyUtil.resProxy(lottoServiceimpl.execute(new Param().set("count", 10)));
-        System.out.println("end");
+        MessageDto messageDto = proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 10)));
+        PrintMessageDto(messageDto);
     }
 
 
