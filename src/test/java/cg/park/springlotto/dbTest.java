@@ -101,6 +101,7 @@ public class dbTest {
         PrintMessageDto(messageDto);
     }
 
+
     // 다중 로또 API 테스트
     @Test
     public void MultiLottoTest() {

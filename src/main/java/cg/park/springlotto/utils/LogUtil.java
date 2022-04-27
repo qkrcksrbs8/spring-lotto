@@ -1,9 +1,12 @@
 package cg.park.springlotto.utils;
 
+import org.springframework.context.annotation.Configuration;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+@Configuration
 public class LogUtil {
 
     public static boolean isNull(String str) {

@@ -12,6 +12,7 @@ import java.util.Set;
 
 @Service
 public class LottoServiceImpl extends CommandService {
+
     @Autowired
     DrawNumbersUtil draw;
 

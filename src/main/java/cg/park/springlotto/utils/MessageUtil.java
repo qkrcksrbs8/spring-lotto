@@ -3,9 +3,9 @@ package cg.park.springlotto.utils;
 import cg.park.springlotto.daos.MessageDao;
 import cg.park.springlotto.models.MessageDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
-@Component
+@Configuration
 public class MessageUtil {
 
     @Autowired
