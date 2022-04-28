@@ -14,10 +14,8 @@ public enum MessageEnum {
     ;// 마무리 세미콜론
 
     private final String codeType;
-
-    MessageEnum(String codeType) {this.codeType = codeType;}
-
     public String getCodeType() {
         return codeType;
     }
+    MessageEnum(String codeType) {this.codeType = codeType;}
 }
