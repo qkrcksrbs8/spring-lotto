@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Aspect
 @Component
-public class paramAOP {
+public class ParamAOP {
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
     String sessGuid = "E6F9B4F2A2465CE76D991BF5807AD9E0";
