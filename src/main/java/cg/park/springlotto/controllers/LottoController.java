@@ -1,9 +1,8 @@
-package cg.park.springlotto.cotrollers;
+package cg.park.springlotto.controllers;
 
 import cg.park.springlotto.comm.SaveProxy;
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.services.impl.LottoServiceImpl;
-import cg.park.springlotto.utils.LottoHistoryUtil;
 import cg.park.springlotto.utils.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

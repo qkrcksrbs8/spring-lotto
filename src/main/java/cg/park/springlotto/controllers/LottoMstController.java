@@ -1,4 +1,4 @@
-package cg.park.springlotto.cotrollers;
+package cg.park.springlotto.controllers;
 
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.services.impl.LottoMstServiceImpl;

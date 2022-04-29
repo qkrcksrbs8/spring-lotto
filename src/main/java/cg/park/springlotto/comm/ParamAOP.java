@@ -4,6 +4,7 @@ import cg.park.springlotto.utils.LogUtil;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.jetbrains.annotations.NotNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,18 +24,19 @@ public class ParamAOP {
     @Autowired
     LogUtil logUtil;
 
-    @Around("execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))")
-    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+//    @Around("execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))")
+    @Around("execution(* cg.park.springlotto..controllers.*.*(..))")
+    public Object around(@NotNull ProceedingJoinPoint joinPoint) throws Throwable {
         String type = joinPoint.getSignature().toShortString();
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
         request.getParameterMap();
         logger.info("SESS_GUID = {}, ===================START===================", sessGuid);
-        logger.info("SESS_GUID = {}, @Around : {} ", sessGuid, type);
         logger.info("SESS_GUID = {}, @Around : {}, param : {} ", sessGuid, type, logUtil.mapToStr(request.getParameterMap()));
         return joinPoint.proceed();
     }
 
-    @Before("execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))")
+//    @Before("execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))")
+    @Before("execution(* cg.park.springlotto..controllers.*.*(..))")
     public void before(JoinPoint joinPoint) {
         String type = joinPoint.getSignature().toShortString();
         Object[] args = joinPoint.getArgs();
@@ -46,14 +48,16 @@ public class ParamAOP {
         }
     }
 
-    @AfterReturning(pointcut = "execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))", returning="retValue")
+//    @AfterReturning(pointcut = "execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))", returning="retValue")
+    @AfterReturning(pointcut = "execution(* cg.park.springlotto..controllers.*.*(..))", returning="retValue")
     public void after(JoinPoint joinPoint, Object retValue) {
         String type = joinPoint.getSignature().toShortString();
         logger.info("SESS_GUID = {}, @After : {}, result : {}", sessGuid, type, retValue);
         logger.info("SESS_GUID = {}, ===================E N D===================", sessGuid);
     }
 
-    @AfterThrowing(pointcut = "execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))", throwing = "ex")
+//    @AfterThrowing(pointcut = "execution(* cg.park.springlotto..controllers.*.*(..)) || execution(* cg.park.springlotto..services.*.*(..))", throwing = "ex")
+    @AfterThrowing(pointcut = "execution(* cg.park.springlotto..controllers.*.*(..))", throwing = "ex")
     public void afterThrowingAnException(JoinPoint joinPoint, Exception ex) {
         logger.info("SESS_GUID = {}, @AfterThrowing ===================E N D===================", sessGuid);
     }

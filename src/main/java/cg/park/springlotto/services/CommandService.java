@@ -6,7 +6,6 @@ import cg.park.springlotto.utils.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
 public abstract class CommandService {
 
     @Autowired
