@@ -23,20 +23,14 @@ public class LottoController {
 
     // 단일 로또 번호 조회
     @GetMapping("/number")
-    public MessageDto number() {
+    public MessageDto singleNumber() {
         return proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
     }
 
     // 다중 로또 번호 조회
     @GetMapping("/number/{count}")
-    public MessageDto manyNumber(@PathVariable("count") int count) {
+    public MessageDto multiNumber(@PathVariable("count") int count) {
         return proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", count)));
     }
 
-    @GetMapping("/ask")
-    public ResponseEntity<MessageDto> ask() {
-        MessageDto result = lottoServiceimpl.execute(new Param().set("count", 1));
-        HttpStatus status = HttpStatus.OK;
-        return new ResponseEntity<>(result, status);
-    }
 }
