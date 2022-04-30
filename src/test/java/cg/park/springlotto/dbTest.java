@@ -132,7 +132,7 @@ public class dbTest {
         System.out.println("end");
     }
 
-    // 로또 역대 당첨 횟수 여러개
+    // 로또 당첨 횟수 업데이트
     @Test
     public void multiHistoryCountTest() {
         System.out.println("multiHistoryCountTest");
