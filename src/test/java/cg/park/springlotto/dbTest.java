@@ -13,6 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 
 @SpringBootTest
@@ -157,6 +159,19 @@ public class dbTest {
     public void thisWeekTest() {
         Param param = historyDao.thisWeek();
         System.out.println(param.toString());
+    }
+
+    @Test
+    public void topSix() {
+        HistoryCountDto historyCount = historyDao.selectHistoryCount();
+        Integer[] allLottoNumberPercentage = new Integer[45];
+        for (int i = 0; i < 45; i++) {
+            allLottoNumberPercentage[i] = historyDao.historyCount(i);
+        }
+        Arrays.sort(allLottoNumberPercentage, Collections.reverseOrder());
+        for (int i = 0; i < 5; i++) {
+            System.out.println(allLottoNumberPercentage[i]);
+        }
     }
 
 }

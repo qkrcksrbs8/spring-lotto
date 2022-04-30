@@ -165,4 +165,8 @@
              ,(no45/round) * 100 as no45
         from historyCount
     </select>
+
+    <select id="topSix" resultType="java.util.HashMap">
+
+    </select>
 </mapper>
