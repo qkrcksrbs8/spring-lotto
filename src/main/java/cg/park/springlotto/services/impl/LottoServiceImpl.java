@@ -7,6 +7,7 @@ import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -26,7 +27,7 @@ public class LottoServiceImpl extends CommandService {
     }
 
     public Param postService(Param param) {
-        List<Set<Integer>> numbers = draw.getLottos(Integer.parseInt(String.valueOf(param.get("count"))));
+        ArrayList<List<Integer>> numbers = draw.getLottos(Integer.parseInt(String.valueOf(param.get("count"))));
         if (numbers.size() == 0) return new Param().set("code", pcgUtil.toEnum("P0002"));
         return new Param().set("code", pcgUtil.toEnum("S0001")).set("numbers", numbers);
     }

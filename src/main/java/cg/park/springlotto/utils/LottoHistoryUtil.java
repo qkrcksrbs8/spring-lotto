@@ -19,10 +19,10 @@ public class LottoHistoryUtil {
 
     public List<LottoNumberDto> setLottoNumbers(MessageDto messageVo) {
         List<LottoNumberDto> lottoNumbers    = new ArrayList<>();
-        List<Set<Integer>> number           = (List<Set<Integer>>) messageVo.getData().get("numbers");
+        ArrayList<List<Integer>> number           = (ArrayList<List<Integer>>) messageVo.getData().get("numbers");
         AtomicInteger cnt                   = new AtomicInteger();
         number.stream().forEach(nums -> {
-            List numList = new ArrayList(nums);
+            List<Integer> numList = new ArrayList(nums);
             Collections.sort(numList);
             Iterator<Integer> num = numList.iterator();
             while(num.hasNext()) {
