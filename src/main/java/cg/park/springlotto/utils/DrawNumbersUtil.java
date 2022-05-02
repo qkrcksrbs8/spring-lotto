@@ -3,7 +3,6 @@ package cg.park.springlotto.utils;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Configuration
 public class DrawNumbersUtil {
