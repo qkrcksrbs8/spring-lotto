@@ -163,7 +163,6 @@ public class dbTest {
 
     @Test
     public void topSix() {
-        HistoryCountDto historyCount = historyDao.selectHistoryCount();
         Integer[] allLottoNumberPercentage = new Integer[45];
         for (int i = 0; i < 45; i++) {
             allLottoNumberPercentage[i] = historyDao.historyCount(i);
