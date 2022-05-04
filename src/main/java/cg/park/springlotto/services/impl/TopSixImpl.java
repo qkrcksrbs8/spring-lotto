@@ -5,10 +5,12 @@ import cg.park.springlotto.services.CommandService;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.Collections;
 
+@Service
 public class TopSixImpl extends CommandService {
 
     @Autowired

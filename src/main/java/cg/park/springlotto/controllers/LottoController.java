@@ -24,6 +24,7 @@ public class LottoController {
 
     @Autowired
     TopSixImpl topSix;
+
     @GetMapping("/number")
     public MessageDto singleNumber() {
         return proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
