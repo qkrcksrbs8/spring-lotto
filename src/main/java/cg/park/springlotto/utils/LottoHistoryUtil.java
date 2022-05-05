@@ -55,9 +55,11 @@ public class LottoHistoryUtil {
         historyDao.saveUserLottoHistory(setUserInfo(messageVo));
     }
 
-    public MessageDto resProxy(MessageDto messageVo) {
-        if (messageVo.getCode().startsWith("S")) saveMessageHistory(messageVo);
-        return messageVo;
+    public Integer[] percentageTopSix() {
+        Integer[] allLottoNumberPercentage = new Integer[45];
+        for (int i = 0; i < 45; i++)
+            allLottoNumberPercentage[i] = historyDao.historyCount(i);
+        return allLottoNumberPercentage;
     }
 
 }

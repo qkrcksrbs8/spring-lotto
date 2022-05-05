@@ -163,10 +163,7 @@ public class dbTest {
 
     @Test
     public void topSix() {
-        Integer[] allLottoNumberPercentage = new Integer[45];
-        for (int i = 0; i < 45; i++) {
-            allLottoNumberPercentage[i] = historyDao.historyCount(i);
-        }
+        Integer[] allLottoNumberPercentage = lottoHistoryUtil.percentageTopSix();
         Arrays.sort(allLottoNumberPercentage, Collections.reverseOrder());
         for (int i = 0; i < 5; i++) {
             System.out.println(allLottoNumberPercentage[i]);
