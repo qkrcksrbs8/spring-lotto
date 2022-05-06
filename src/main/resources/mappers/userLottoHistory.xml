@@ -116,7 +116,7 @@
         where 1=1
     </update>
 
-    <select id="selectHistoryCount" resultType="cg.park.springlotto.models.HistoryCountDto">
+    <select id="selectNumbersPercentage" resultType="cg.park.springlotto.models.HistoryCountDto">
         select
             (no1/round) * 100 as no1
              ,(no2/round) * 100 as no2

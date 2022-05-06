@@ -11,7 +11,7 @@ import java.util.HashMap;
 public interface HistoryDao {
     int historyCount(int number);
     int updateHistoryCount(HashMap<String, Integer> map);
-    HistoryCountDto selectHistoryCount();
+    HistoryCountDto selectNumbersPercentage();
     Param thisWeek();
     int saveUserLottoHistory(UserLottoHistoryDto userLottoHistory);
 }

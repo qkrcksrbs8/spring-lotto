@@ -25,7 +25,7 @@ public class LottoMstServiceImpl extends CommandService {
     }
 
     public Param postService(Param param) {
-        HistoryCountDto historyCount = historyDao.selectHistoryCount();
+        HistoryCountDto historyCount = historyDao.selectNumbersPercentage();
         return new Param().set("code", pcgUtil.toEnum("S0001")).set("lottoPercentage", historyCount);
     }
 }

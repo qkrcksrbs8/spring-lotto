@@ -151,7 +151,7 @@ public class dbTest {
     // 로또번호 당첨 퍼센트
     @Test
     public void lottoPercentage() {
-        HistoryCountDto historyCount = historyDao.selectHistoryCount();
+        HistoryCountDto historyCount = historyDao.selectNumbersPercentage();
         System.out.println(historyCount.toString());
     }
 
