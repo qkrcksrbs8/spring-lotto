@@ -19,4 +19,11 @@ public class JpaTest {
         List<user> users = userRepository.findByName(name);
         System.out.println(users.toString());
     }
+
+    @Test
+    public void selectUsers() {
+        String name = "관리자";
+        List<user> users = userRepository.findByName(name);
+        System.out.println(users.toString());
+    }
 }
