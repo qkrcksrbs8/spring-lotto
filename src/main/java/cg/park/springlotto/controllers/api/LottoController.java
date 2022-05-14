@@ -1,4 +1,4 @@
-package cg.park.springlotto.controllers;
+package cg.park.springlotto.controllers.api;
 
 import cg.park.springlotto.comm.SaveProxy;
 import cg.park.springlotto.models.MessageDto;
@@ -6,10 +6,11 @@ import cg.park.springlotto.services.impl.LottoServiceImpl;
 import cg.park.springlotto.services.impl.TopSixImpl;
 import cg.park.springlotto.utils.Param;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping("/test")
 @ResponseBody

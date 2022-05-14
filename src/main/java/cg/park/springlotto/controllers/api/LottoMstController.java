@@ -1,4 +1,4 @@
-package cg.park.springlotto.controllers;
+package cg.park.springlotto.controllers.api;
 
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.services.impl.LottoMstServiceImpl;
