@@ -17,9 +17,6 @@ public class LottoMstServiceImpl extends CommandService {
     @Autowired
     HistoryDao historyDao;
 
-
-
-
     public Param preService(Param param) {
         return new Param().set("code", pcgUtil.toEnum("S0001"));
     }
