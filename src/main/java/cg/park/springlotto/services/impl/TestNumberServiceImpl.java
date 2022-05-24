@@ -20,16 +20,20 @@ public class TestNumberServiceImpl extends CommandService {
     PcgUtil pcgUtil;
 
     public Param preService(Param param) {
-        int count = Integer.parseInt(String.valueOf(param.get("count")));
-        return (0 > count || 5 < count)
+        return (isBetweenOneAndFive(Integer.parseInt(String.valueOf(param.get("count")))))
                 ? new Param().set("code", pcgUtil.toEnum("P0001"))
                 : new Param().set("code", pcgUtil.toEnum("S0001"));
     }
 
+    private boolean isBetweenOneAndFive(int count){
+        return 0 > count || 5 < count;
+    }
+
     public Param postService(Param param) {
         ArrayList<List<Integer>> numbers = lotto.getLottos(Integer.parseInt(String.valueOf(param.get("count"))));
-        if (numbers.size() == 0) return new Param().set("code", pcgUtil.toEnum("P0002"));
-        return new Param().set("code", pcgUtil.toEnum("S0001")).set("numbers", numbers);
+        return (numbers.size() == 0)
+                ? new Param().set("code", pcgUtil.toEnum("P0002"))
+                : new Param().set("code", pcgUtil.toEnum("S0001")).set("numbers", numbers);
     }
 
 }
