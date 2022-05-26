@@ -1,7 +1,6 @@
 package cg.park.springlotto.services.impl;
 
 import cg.park.springlotto.daos.HistoryDao;
-import cg.park.springlotto.models.HistoryCountDto;
 import cg.park.springlotto.services.CommandService;
 import cg.park.springlotto.utils.Param;
 import cg.park.springlotto.utils.PcgUtil;
@@ -22,7 +21,8 @@ public class LottoMstServiceImpl extends CommandService {
     }
 
     public Param postService(Param param) {
-        HistoryCountDto historyCount = historyDao.selectNumbersPercentage();
-        return new Param().set("code", pcgUtil.toEnum("S0001")).set("lottoPercentage", historyCount);
+        return new Param()
+                .set("code", pcgUtil.toEnum("S0001"))
+                .set("lottoPercentage", historyDao.selectNumbersPercentage());
     }
 }
