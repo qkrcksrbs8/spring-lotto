@@ -20,11 +20,15 @@ public class LottoServiceImpl extends CommandService {
     PcgUtil pcgUtil;
 
     public Param preService(Param param) {
-        return (isBetweenMinAndMax(0, 5, Integer.parseInt(String.valueOf(param.get("count")))))
-                ? new Param().set("code", pcgUtil.toEnum("S0001"))
-                : new Param().set("code", pcgUtil.toEnum("P0001"));
+        return new Param().set("code", pcgUtil.toEnum(getInvalidCheckCode(param)));
     }
-    
+
+    private String getInvalidCheckCode(Param param) {
+        return isBetweenMinAndMax(0, 5, Integer.parseInt(String.valueOf(param.get("count"))))
+            ? "P0001"
+            : "S0001";
+    }
+
     private boolean isBetweenMinAndMax (int min, int max, int count) {
         return min >= count || max < count;
     }
