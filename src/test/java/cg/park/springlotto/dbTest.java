@@ -142,7 +142,7 @@ public class dbTest {
         for (int i = 1; i <= 45; i++) {
             map.put("no"+i, historyDao.historyCount(i));
         }
-        map.put("round", 1013);
+        map.put("round", 1018);
         historyDao.updateHistoryCount(map);
         System.out.println(map);
         System.out.println("end");
