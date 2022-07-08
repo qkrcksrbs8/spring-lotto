@@ -1,7 +1,6 @@
 package cg.park.springlotto.utils;
 
 import cg.park.springlotto.daos.HistoryDao;
-import cg.park.springlotto.daos.LottoDao;
 import cg.park.springlotto.models.LottoNumberDto;
 import cg.park.springlotto.models.MessageDto;
 import cg.park.springlotto.models.UserLottoHistoryDto;
@@ -18,8 +17,8 @@ public class LottoHistoryUtil {
     HistoryDao historyDao;
 
     public List<LottoNumberDto> setLottoNumbers(MessageDto messageVo) {
-        List<LottoNumberDto> lottoNumbers    = new ArrayList<>();
-        ArrayList<List<Integer>> number           = (ArrayList<List<Integer>>) messageVo.getData().get("numbers");
+        List<LottoNumberDto> lottoNumbers   = new ArrayList<>();
+        ArrayList<List<Integer>> number     = (ArrayList<List<Integer>>) messageVo.getData().get("numbers");
         AtomicInteger cnt                   = new AtomicInteger();
         number.stream().forEach(nums -> {
             List<Integer> numList = new ArrayList(nums);
@@ -55,11 +54,12 @@ public class LottoHistoryUtil {
         historyDao.saveUserLottoHistory(setUserInfo(messageVo));
     }
 
-    public Integer[] percentageTopSix() {
+    public HashMap<Integer, Integer> percentageTopSix() {
         Integer[] allLottoNumberPercentage = new Integer[45];
-        for (int i = 0; i < 45; i++)
-            allLottoNumberPercentage[i] = historyDao.historyCount(i);
-        return allLottoNumberPercentage;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 1; i < 46; i++)
+            map.put(i, historyDao.historyCount(i));
+        return map;
     }
 
 }

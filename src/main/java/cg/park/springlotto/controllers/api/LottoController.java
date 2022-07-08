@@ -28,6 +28,10 @@ public class LottoController {
 
     @GetMapping("/number")
     public MessageDto singleNumber() {
+        //public MessageDto singleNumber(HttpRequestServlet req) {
+        // req.getParameter("name");
+        //public MessageDto singleNumber(EmpDto empDto) {
+        // empDto.getEname
         return proxy.resProxy(lottoServiceimpl.execute(new Param().set("count", 1)));
     }
 
@@ -38,7 +42,7 @@ public class LottoController {
 
     @GetMapping("/topSix")
     public MessageDto topSix() {
-        return proxy.resProxy(topSix.execute(new Param()));
+        return topSix.execute(new Param());
     }
 
 }

@@ -13,9 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 @SpringBootTest
 public class dbTest {
@@ -163,10 +161,11 @@ public class dbTest {
 
     @Test
     public void topSix() {
-        Integer[] allLottoNumberPercentage = lottoHistoryUtil.percentageTopSix();
-        Arrays.sort(allLottoNumberPercentage, Collections.reverseOrder());
-        for (int i = 0; i < 5; i++) {
-            System.out.println(allLottoNumberPercentage[i]);
+        HashMap<Integer, Integer>  map = lottoHistoryUtil.percentageTopSix();
+        List<Map.Entry<Integer, Integer>> entries = new LinkedList<>(map.entrySet());
+        Collections.sort(entries, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
+        for (int i = 1; i < 7; i++) {
+            System.out.println(entries.get(i));
         }
     }
 

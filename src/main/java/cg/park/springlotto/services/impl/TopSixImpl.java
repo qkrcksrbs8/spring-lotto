@@ -8,8 +8,7 @@ import cg.park.springlotto.utils.PcgUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.Collections;
+import java.util.*;
 
 @Service
 public class TopSixImpl extends CommandService {
@@ -28,8 +27,10 @@ public class TopSixImpl extends CommandService {
     }
 
     public Param postService(Param param) {
-        Integer[] allLottoNumberPercentage = lottoHistoryUtil.percentageTopSix();
-        Arrays.sort(allLottoNumberPercentage, Collections.reverseOrder());
-        return new Param().set("code", pcgUtil.toEnum("S0001")).set("topSix", allLottoNumberPercentage);
+        HashMap<Integer, Integer> map = lottoHistoryUtil.percentageTopSix();
+        List<Map.Entry<Integer, Integer>> entries = new LinkedList<>(map.entrySet());
+
+        Collections.sort(entries, (o1, o2) -> o1.getValue().compareTo(o2.getValue()));
+        return new Param().set("code", pcgUtil.toEnum("S0001")).set("topSix", entries);
     }
 }

@@ -13,5 +13,4 @@ public class MainController {
         System.out.println("index 호출");
         return "index";
     }
-
 }

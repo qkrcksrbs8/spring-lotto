@@ -16,7 +16,6 @@
                     success: function(data) {
                         $("#singleView").text("");
                         data.data.numbers[0].forEach(number => $("#singleView").append(number + ' '));
-
                     }
                 })
             })
