@@ -6,9 +6,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.StringTokenizer;
 
 @SpringBootTest
 public class PagingTest {
+
+    @Test
+    public void emailTest() {
+
+        String email = "qkrcksrbs8@naver.com";
+
+        StringTokenizer token = new StringTokenizer(email, "@");
+        System.out.println("email1 :"+ token.nextToken()); // qkrcksrbs8
+        System.out.println("email2 :"+ token.nextToken()); // naver.com
+    }
+
 
     @Test
     public void paging() {
